@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Flickr API</title>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/ui/1.11.0/jquery-ui.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+	<style type="text/css">
+		body, html, div {
+			height: 100%;
+			padding: 0px;
+			margin: 0px;
+		}
+		table, tr, td {
+			width: 100%;
+			height: 100%;
+		}
+		.info {
+			width: 20px;
+			background-color: black;
+			color: white;
+			position: absolute;
+    		top: 477px;
+    		width: 500px;
+		}
+		div {
+			margin-left:50px;
+		}
+	</style>
+	<script type="text/javascript">
+		function jsonFlickrApi (response) {
+			var photo = response.photos.photo[0];
+			var ret = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '.jpg';
+			
+			$('img', '.image').attr ('src', ret);
+			$('.info').text (photo.ownername);
+
+		}
+		$(function () {
+			$.ajax({
+				url: 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=ce4df28cf510f884a2d4ccabb7f5a871&text=flowers,stargazers&format=json&extras=owner_name',
+				dataType: 'jsonp'
+			});
+
+			$('.info').hover(function() {
+				$(this).stop().animate({
+					top: '265px',
+					height: '225px'
+				},
+				{
+					duration: 500
+				});
+			}, function () {
+				$(this).stop().animate ({
+					top: '477px',
+					height: '21px'
+				},{
+					duration: 500
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id ="images">
+		<table>
+			<tr>
+				<td>
+					<div class="image">
+						<img src="">
+						<p class="info"></p>
+					</div>
+				</td>
+			</tr>		
+		</table>	
+	</div>
+</body>
+</html>

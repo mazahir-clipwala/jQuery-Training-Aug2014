@@ -1,0 +1,50 @@
+<!-- info window -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/jquery-ui.css">
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+<script type="text/javascript">
+	$(function () {
+		var mapProp = {
+			zoom: 8,
+			center: new google.maps.LatLng (44.9442, -93.0936)
+		};
+
+		$map = $('#map');
+		map = new google.maps.Map ($map[0], mapProp);
+
+		var marker = new google.maps.Marker({
+			position: mapProp.center,
+			map: map,
+			animation: google.maps.Animation.bounce
+		});
+
+		google.maps.event.addDomListener(marker, 'click', function (){
+			var info = new google.maps.InfoWindow({
+				content: 'This is Saint Paul'
+			});
+
+			info.open (map, marker);
+		});
+	});
+</script>
+<style type="text/css">
+	body, html, #map {
+		font-family: Arial, Calibri;
+		font-size: 62.5%;
+		height: 100%;
+		padding: 0px;
+		margin: 0px;
+	}
+</style>
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="map"></div>
+
+</body>
+</html>

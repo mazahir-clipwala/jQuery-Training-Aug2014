@@ -1,0 +1,35 @@
+<!-- simple map -->
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<style type="text/css">
+	html, body, #map {
+		height: 100%;
+		padding: 0px;
+		margin: 0px;
+	}
+</style>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+<script type="text/javascript">
+var map;
+function initialize () {
+	var mapProp = {
+		zoom: 8,
+		center: new google.maps.LatLng (18.9750, 72.8258)
+	};
+
+	map = new google.maps.Map(document.getElementById('map'), mapProp);
+}
+
+$(function () {
+	initialize ();
+});
+</script>
+  
+</head>
+<body>
+	<div id="map"></div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Animate</title>
+	<script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/jquery-ui.css">
+	<style type="text/css">
+	body {
+		font-family: Calibri, Arial;
+		font-size: 125%;
+	}
+	#amazing {
+		border: 1px solid black;
+		width: 100px;
+		height: 100px;
+		position: relative;
+	}
+	</style>
+	<script type="text/javascript">
+		$(function () {
+			$('#amazing').animate({
+				left: '500px',
+				height: 'hide'
+			},
+			{
+				duration: 5000,
+				specialEasing: {
+					height: 'easeOutBounce'
+				}
+			})
+		});
+	</script>
+</head>
+<body>
+	<div id="amazing">Hello World</div>
+
+</body>
+</html>
